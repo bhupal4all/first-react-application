@@ -1,0 +1,10 @@
+h1, p {
+  font-family: Lato;
+}
+
+.playGround {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+
+}

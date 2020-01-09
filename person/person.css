@@ -1,0 +1,13 @@
+.person {
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.person button {
+  background-color: #1e1e1e;
+  color: white;
+  height: 30px;
+  border-radius: 5px;
+}
