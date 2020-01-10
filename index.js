@@ -39,7 +39,14 @@ class App extends Component {
 
     let persons = null;
 
-
+    this.persions = (
+        <Person
+          click={this.switchNameHandler.bind(this, "New Name")}
+          changed={this.nameChangeHandler}
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+    );
 
 
     return (
@@ -52,12 +59,7 @@ class App extends Component {
           Toggle Persons
         </button>
 
-        <Person
-          click={this.switchNameHandler.bind(this, "New Name")}
-          changed={this.nameChangeHandler}
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
+        {this.persions}
       </div>
     );
   }
