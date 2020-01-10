@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Radium from 'radium';
 import { render } from "react-dom";
 import Hello from "./Hello";
-import "./style.css";
+import "./app.css";
 import Person from "./person/person";
 
 class App extends Component {
@@ -52,7 +52,11 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     const classes = [];
