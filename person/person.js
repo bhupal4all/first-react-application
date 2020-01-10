@@ -10,8 +10,14 @@ const person = props => {
     }
   };
 
+  const personStyle = {
+    '@media (min-width: 500px)': {
+      width: '450px',
+    }
+  };
+
   return (
-    <div className="person">
+    <div className="person" style={personStyle}>
       <p>
         I am <b>{props.name}</b> and age is <b>{props.age}</b>. Click Here to{" "}
       </p>

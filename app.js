@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import { render } from "react-dom";
 import Hello from "./Hello";
 import "./app.css";
@@ -91,6 +91,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="playGround">
         <h2>React Version: {React.version}</h2>
 
@@ -104,6 +105,7 @@ class App extends Component {
 
         {persons}
       </div>
+      </StyleRoot>
     );
   }
 }
