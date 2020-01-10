@@ -8,7 +8,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "React",
+      name: "Bhupal",
+      showPersons: true,
       persons: [{ name: "Ram", age: 31 }, { name: "Sita", age: 29 }]
     };
   }
@@ -28,17 +29,28 @@ class App extends Component {
     });
   };
 
+  toggleShowPersonsHandler = () =>{
+    this.setState({
+      showPersons: !this.state.showPersons
+    });
+  };
+
   render() {
+
+    let persons = null;
+
+
+
+
     return (
       <div className='playGround'>
+        <h2>React Version: {React.version}</h2>
+
         <Hello name={this.state.name} />
 
-        <button onClick={this.switchNameHandler.bind(this, "Ram")}>
-          Reset Name
+        <button onClick={this.toggleShowPersonsHandler}>
+          Toggle Persons
         </button>
-        <br/>
-        <br/>
-        <br/>
 
         <Person
           click={this.switchNameHandler.bind(this, "New Name")}
