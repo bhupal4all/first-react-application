@@ -1,7 +1,15 @@
 import React from "react";
+import Radium from 'radium';
 import "./person.css";
 
 const person = props => {
+  const buttonStyle={
+    ':hover': {
+      backgroundColor: 'lightgreen',
+      color: 'black'
+    }
+  };
+
   return (
     <div className="person">
       <p>
@@ -10,9 +18,9 @@ const person = props => {
 
       <input type="text" value={props.name} onChange={props.changed} />
       <br />
-      <button onClick={props.onClick}>Delete Me</button>
+      <button style={buttonStyle} onClick={props.onClick}>Delete Me</button>
     </div>
   );
 };
 
-export default person;
+export default Radium(person);
