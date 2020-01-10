@@ -14,52 +14,57 @@ class App extends Component {
     };
   }
 
-  switchNameHandler = newName => {
-    this.setState({
-      persons: [{ name: newName, age: 29 }]
-    });
+  deletePersonHandler = index => {
+    const persons = this.state.persons;
+    persons.splice(index, 1);
+    this.setState({ persons: persons });
   };
 
   nameChangeHandler = event => {
     console.log(event.target);
-    this.setState({
-      persons: [{ name: event.target.value, age: 29 }]
-    }, () => {
-      console.log("Changed:", this.state);
-    });
+    this.setState(
+      {
+        persons: [{ name: event.target.value, age: 29 }]
+      },
+      () => {
+        console.log("Changed:", this.state);
+      }
+    );
   };
 
-  toggleShowPersonsHandler = () =>{
-    this.setState({
-      showPersons: !this.state.showPersons
-    });
+  toggleShowPersonsHandler = () => {
+    const showPersons = this.state.showPersons;
+    this.setState({ showPersons: !showPersons });
   };
 
   render() {
-
     let persons = null;
 
-    this.persions = (
-        <Person
-          click={this.switchNameHandler.bind(this, "New Name")}
-          changed={this.nameChangeHandler}
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-    );
-
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                onClick={()=>this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+              />
+            );
+          })}
+        </div>
+      );
+    }
 
     return (
-      <div className='playGround'>
+      <div className="playGround">
         <h2>React Version: {React.version}</h2>
 
         <Hello name={this.state.name} />
 
-        <button onClick={this.toggleShowPersonsHandler}>
-          Toggle Persons
-        </button>
+        <button onClick={this.toggleShowPersonsHandler}>Toggle Persons</button>
 
-        {this.persions}
+        {persons}
       </div>
     );
   }
