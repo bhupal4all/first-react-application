@@ -10,7 +10,10 @@ class App extends Component {
     this.state = {
       name: "Bhupal",
       showPersons: true,
-      persons: [{ name: "Ram", age: 31 }, { name: "Sita", age: 29 }]
+      persons: [
+        { id: '123', name: "Ram", age: 31 }, 
+        { id: '124', name: "Sita", age: 29 }
+        ]
     };
   }
 
@@ -20,16 +23,19 @@ class App extends Component {
     this.setState({ persons: persons }); 
   };
 
-  nameChangeHandler = event => {
-    console.log(event.target);
-    this.setState(
-      {
-        persons: [{ name: event.target.value, age: 29 }]
-      },
-      () => {
-        console.log("Changed:", this.state);
-      }
-    );
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => p.id == id);
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({persons: persons});
   };
 
   toggleShowPersonsHandler = () => {
@@ -46,8 +52,9 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
-                key={index}
                 onClick={()=>this.deletePersonHandler(index)}
+                changed={(event)=>this.nameChangeHandler(event, person.id)}
+                key={person.id}
                 name={person.name}
                 age={person.age}
               />
