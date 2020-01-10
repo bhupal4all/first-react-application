@@ -5,3 +5,11 @@ h1, p {
 .playGround {
   text-align: center;
 }
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}

@@ -12,7 +12,8 @@ class App extends Component {
       showPersons: true,
       persons: [
         { id: "123", name: "Ram", age: 31 },
-        { id: "124", name: "Sita", age: 29 }
+        { id: "124", name: "Sita", age: 29 },
+        { id: "125", name: "Laxman", age: 30 }
       ]
     };
   }
@@ -53,6 +54,16 @@ class App extends Component {
       cursor: "pointer"
     };
 
+    const classes = [];
+
+    if (this.state.persons.length<=2){
+      classes.push('red');
+    }
+
+    if (this.state.persons.length<=1){
+      classes.push('bold');
+    }
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -77,6 +88,8 @@ class App extends Component {
     return (
       <div className="playGround">
         <h2>React Version: {React.version}</h2>
+
+        <p className={classes.join(' ')}>We have {this.state.persons.length} Persons</p>
 
         <Hello name={this.state.name} />
 
