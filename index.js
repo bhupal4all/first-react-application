@@ -11,16 +11,16 @@ class App extends Component {
       name: "Bhupal",
       showPersons: true,
       persons: [
-        { id: '123', name: "Ram", age: 31 }, 
-        { id: '124', name: "Sita", age: 29 }
-        ]
+        { id: "123", name: "Ram", age: 31 },
+        { id: "124", name: "Sita", age: 29 }
+      ]
     };
   }
 
   deletePersonHandler = index => {
     const persons = [...this.state.persons];
     persons.splice(index, 1);
-    this.setState({ persons: persons }); 
+    this.setState({ persons: persons });
   };
 
   nameChangeHandler = (event, id) => {
@@ -35,7 +35,7 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({persons: persons});
+    this.setState({ persons: persons });
   };
 
   toggleShowPersonsHandler = () => {
@@ -44,6 +44,15 @@ class App extends Component {
   };
 
   render() {
+    const buttonStyle = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -52,8 +61,8 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
-                onClick={()=>this.deletePersonHandler(index)}
-                changed={(event)=>this.nameChangeHandler(event, person.id)}
+                onClick={() => this.deletePersonHandler(index)}
+                changed={event => this.nameChangeHandler(event, person.id)}
                 key={person.id}
                 name={person.name}
                 age={person.age}
@@ -62,6 +71,7 @@ class App extends Component {
           })}
         </div>
       );
+      buttonStyle.backgroundColor = "red";
     }
 
     return (
@@ -70,7 +80,9 @@ class App extends Component {
 
         <Hello name={this.state.name} />
 
-        <button onClick={this.toggleShowPersonsHandler}>Toggle Persons</button>
+        <button style={buttonStyle} onClick={this.toggleShowPersonsHandler}>
+          Toggle Persons
+        </button>
 
         {persons}
       </div>
